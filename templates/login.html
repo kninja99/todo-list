@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Sign-In{%endblock%}</title>
+    <!-- this is for boot strap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="../static/login.css" />
+    {% block sty %} {%endblock%}
+  </head>
+  <body>
+    <!-- header -->
+    <div class="container header"><h1>Productivity App</h1></div>
+    <!-- flashes errors -->
+    
+    {% with messages = get_flashed_messages(with_categories =true) %} {% if messages %}
+    
+    <!-- custom alerts -->
+    <div class="alerts container">
+      {% for category,message in messages %}
+      <button id = "dismisal-{{category}}">X</button>
+      <div class= "{{category}}"><h4>{{message}}</h3> </div>
+      <!-- adds ability to remove alert -->
+      <script>
+        let dis_button = document.querySelector("#dismisal-{{category}}");
+        let alerts = document.querySelector(".alerts")
+        dis_button.addEventListener("click", ()=>{
+          alerts.remove()
+        })
+      </script>
+      {% endfor %}
+    </div>
+      
+  
+    {% endif %} {% endwith %}
+    <!-- login box -->
+    <div class="login-background container">
+      {% block content %}
+      <h3>Login</h3>
+      <form method="POST">
+        <div class="username">
+          <input type="text" placeholder="Username" name="username" />
+        </div>
+        <br />
+        <div class="password">
+          <input type="password" placeholder="Password" name="password" />
+        </div>
+        <button type="submit" id="login-btn">Login</button>
+      </form>
+
+      <form action="http://localhost:5000/signup">
+        <button type="submit" id="signup-btn">sign-up</button>
+      </form>
+      {%endblock%}
+    </div>
+  </body>
+</html>

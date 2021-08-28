@@ -1,0 +1,13 @@
+/* correcting stylesheet of login for signup */
+
+form div {
+  margin-top: 25px;
+}
+
+.username {
+  margin-top: 25px;
+}
+
+#signup-btn {
+  margin-top: 25px;
+}
