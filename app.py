@@ -22,7 +22,7 @@ mysql = MySQL(app)
 @app.route('/database')
 def test():
     cur = mysql.connection.cursor()
-    return '<h1>test</h1>'
+    return '<h1>this is now changed</h1>'
 
 
 @app.route('/login', methods=['GET', 'POST'])
