@@ -53,7 +53,7 @@ def signIn():
                 if(check_password(database_password, password)):
                     return f"<h1>Hello {database_username}</h2>"
             except:
-                flash('Username or Password is incorrect', category='error')
+                flash('password incorrect', category='error')
                 return render_template('login.html')
         except:
             flash('Username or Password is incorrect', category='error')
