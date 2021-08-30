@@ -59,14 +59,14 @@ def singUp():
             else:
                 cur = mysql.connection.cursor()
                 hashed_password = encrypt_password(password)
-                # try:
-                cur.execute(
-                    "insert into Users values('test004@email.com', 'user004' , 'pass004')")
-                mysql.connection.commit()
-                return render_template('login.html')
-                # except:
-                #    flash('Email or User already exist', category='error')
-                #    return render_template('signup.html')
+                try:
+                    cur.execute(
+                        f"insert into Users values('{email}', '{username}' , '{password}')")
+                    mysql.connection.commit()
+                    return render_template('login.html')
+                except:
+                    flash('Email or User already exist', category='error')
+                    return render_template('signup.html')
     else:
         return render_template('signup.html')
 
