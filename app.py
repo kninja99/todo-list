@@ -22,6 +22,9 @@ mysql = MySQL(app)
 @app.route('/database')
 def test():
     cur = mysql.connection.cursor()
+    cur.execute('''select * from users ''')
+    results = cur.fetchall()
+    print(results)
     return '<h1>Pi Change</h1>'
 
 
