@@ -49,8 +49,7 @@ def signIn():
                 cur.execute(
                     f"select password from Users where username='{username}'")
                 database_password = cur.fetchone()
-                print(database_password)
-                print(check_password(database_password['password'], password))
+                database_password = database_password['password']
                 if(check_password(database_password, password)):
                     return f"<h1>Hello {database_username}</h2>"
             except:
