@@ -62,7 +62,7 @@ def singUp():
                 try:
                     cur.execute(
                         f'insert into Users values({email}, {username}) , {hashed_password});')
-                    mysql.connection.commit()
+                    # mysql.connection.commit()
                     return render_template('login.html')
                 except:
                     flash('Email or User already exist', category='error')
