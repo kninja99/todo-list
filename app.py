@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash
 from flask_mysqldb import MySQL
-from authentication import encrypt_password
+from authentication import check_password, encrypt_password
 
 app = Flask(__name__)
 # database connect
@@ -30,7 +30,35 @@ def test():
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def signIn():
-    return render_template('login.html')
+    if request.method == 'POST':
+        # getting infor from the form
+        data = request.form
+        username = data.get('username')
+        password = data.get('password')
+        # now has to check database
+        cur = mysql.connection.cursor()
+        # this will check if the user exist
+        try:
+            cur.execute(
+                f"select username from Users where username='{username}'")
+            # checking the Username
+            database_username = cur.fetchone()
+            print(database_username)
+            # checking the password
+            try:
+                cur.execute(
+                    f"select password from Users where username='{username}'")
+                database_password = cur.fetchone()
+                if(check_password(database_password, password)):
+                    return f"<h1>Hello {database_username}</h2>"
+            except:
+                flash('Username or Password is incorrect', category='error')
+                return render_template('login.html')
+        except:
+            flash('Username or Password is incorrect', category='error')
+            return render_template('login.html')
+    else:
+        return render_template('login.html')
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -59,11 +87,13 @@ def singUp():
             else:
                 cur = mysql.connection.cursor()
                 hashed_password = encrypt_password(password)
+                # trys to create the user
                 try:
                     cur.execute(
                         f"insert into Users values('{email}', '{username}' , '{hashed_password}')")
                     mysql.connection.commit()
                     return render_template('login.html')
+                # if user can't be created it will flash an error
                 except:
                     flash('Email or User already exist', category='error')
                     return render_template('signup.html')
