@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash
 from flask_mysqldb import MySQL
-import authentication
+from authentication import encrypt_password
 
 app = Flask(__name__)
 # database connect
@@ -18,8 +18,7 @@ mysql = MySQL(app)
 # server testing
 
 
-@app.route('/')
-@app.route('/database')
+@app.route('/databaseTest')
 def test():
     cur = mysql.connection.cursor()
     cur.execute('''select * from Users ''')
@@ -28,6 +27,7 @@ def test():
     return '<h1>Pi Change</h1>'
 
 
+@app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def signIn():
     return render_template('login.html')
@@ -57,7 +57,16 @@ def singUp():
                 return render_template('signup.html')
         # enter the info to the data base then return user to login with a positive alert
             else:
-                return render_template('login.html')
+                cur = mysql.connection.cursor()
+                hashed_password = encrypt_password(password)
+                try:
+                    cur.execute(
+                        '''insert into Users values(${email}, ${username}) , ${hashed_password}''')
+                    mysql.connection.commit()
+                    return render_template('login.html')
+                except:
+                    flash('Email or User already exist', category='error')
+                    return render_template('signup.html')
     else:
         return render_template('signup.html')
 
