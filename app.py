@@ -61,7 +61,7 @@ def singUp():
                 hashed_password = encrypt_password(password)
                 # try:
                 cur.execute(
-                    "insert into Users values({email}, {username} , {hashed_password});")
+                    "insert into Users values({email}, {username} , {hashed_password})")
                 mysql.connection.commit()
                 return render_template('login.html')
                 # except:
