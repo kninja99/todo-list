@@ -49,6 +49,7 @@ def signIn():
                 cur.execute(
                     f"select password from Users where username='{username}'")
                 database_password = cur.fetchone()
+                print(database_password)
                 if(check_password(database_password, password)):
                     return f"<h1>Hello {database_username}</h2>"
             except:
@@ -74,7 +75,7 @@ def singUp():
         # checking if all data exist
         if email == '' or confirm_email == '' or username == '' or password == '' or confirm_email == '':
             flash('Missing sign-up data try again', category='error')
-            return render_template('signup.html', email1=email)
+            return render_template('signup.html')
         # none matching data
         else:
             if email != confirm_email:
