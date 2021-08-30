@@ -42,7 +42,7 @@ def signIn():
             cur.execute(
                 f"select username from Users where username='{username}'")
             # checking the Username
-            database_username = cur.fetchone()
+            database_username = cur.fetchone()['username']
             print(database_username)
             # checking the password (error)
             try:
