@@ -1,12 +1,13 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect
+from flask.helpers import url_for
 from flask_mysqldb import MySQL
 from authentication import check_password, encrypt_password
 
 app = Flask(__name__)
-# database connect
+# ----database connect----
 
 # host will be local host once moved to pi
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = '192.168.254.156'
 # this will be root once moved to pi
 app.config['MYSQL_USER'] = 'remoteUser'
 app.config['MYSQL_PASSWORD'] = 'Orkz9921('
@@ -31,6 +32,7 @@ def test():
 @app.route('/login', methods=['GET', 'POST'])
 def signIn():
     if request.method == 'POST':
+        url = request.url
         # getting infor from the form
         data = request.form
         username = data.get('username')
@@ -44,13 +46,14 @@ def signIn():
             # checking the Username
             database_username = cur.fetchone()['username']
             print(database_username)
-            # checking the password (error)
+            # checking the password
             try:
                 cur.execute(
                     f"select password from Users where username='{username}'")
                 database_password = cur.fetchone()
                 database_password = database_password['password']
                 if(check_password(database_password, password)):
+                    # where it will redirect user once it loads
                     return f"<h1>Hello {database_username}</h2>"
             except:
                 flash('password incorrect', category='error')
@@ -63,7 +66,7 @@ def signIn():
 
 
 @app.route('/signup', methods=['GET', 'POST'])
-def singUp():
+def signUp():
     if request.method == 'POST':
         data = request.form
         # gets data from the form
@@ -93,7 +96,7 @@ def singUp():
                     cur.execute(
                         f"insert into Users values('{email}', '{username}' , '{hashed_password}')")
                     mysql.connection.commit()
-                    return render_template('login.html')
+                    return redirect(url_for('signIn'))
                 # if user can't be created it will flash an error
                 except:
                     flash('Email or User already exist', category='error')
