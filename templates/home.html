@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="../static/home.css" />
+    <title>TODO</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img id="logo" src="../static/img/todo_logo.jpg" alt="logo" />
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">SIGN IN</a></li>
+            <li><a href="#">SIGN UP</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    {%block container%}
+    <div class="call-to-action">
+      <div id="call">
+        <h3>Brighten your future and start being more productive today</h3>
+        <a href="#"><button>SIGN UP</button></a>
+      </div>
+      <div id="brain-background">
+        <img src="../static/img/brain firing_adobespark.png" alt="brain" />
+      </div>
+    </div>
+
+    {%endblock%}
+  </body>
+</html>

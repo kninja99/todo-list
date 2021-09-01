@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, session
 from flask.helpers import url_for
 from flask_mysqldb import MySQL
 from authentication import check_password, encrypt_password
 
 app = Flask(__name__)
-# ----database connect----
+# ---- database connect ----
 
 # host will be local host once moved to pi
 app.config['MYSQL_HOST'] = '192.168.254.156'
@@ -29,6 +29,11 @@ def test():
 
 
 @app.route('/')
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def signIn():
     if request.method == 'POST':
@@ -52,9 +57,11 @@ def signIn():
                     f"select password from Users where username='{username}'")
                 database_password = cur.fetchone()
                 database_password = database_password['password']
+                # checking if the user sucessfully logged in
                 if(check_password(database_password, password)):
+                    session['username'] = database_username
                     # where it will redirect user once it loads
-                    return f"<h1>Hello {database_username}</h2>"
+                    return f"<h1>Hello {session['username']}</h2>"
             except:
                 flash('password incorrect', category='error')
                 return render_template('login.html')

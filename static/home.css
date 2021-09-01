@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+  font-family: 'Ubuntu', sans-serif;
+  --background: #0a1931;
+}
+
+body {
+  background-image: linear-gradient(to right, #2a5470, #4c4177);
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* headers */
+header {
+  margin-top: 28px;
+  margin-left: 120px;
+  margin-right: 95px;
+}
+
+#logo {
+  width: 150px;
+}
+/* nav bar styles */
+nav {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.navbar-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-links li {
+  list-style: none;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.navbar-links li a:last-child {
+  padding-right: 0;
+}
+
+.navbar-links li:hover {
+  background-image: linear-gradient(to right, #3b77f8, #3b48f8);
+  border-radius: 25px;
+}
+
+.call-to-action {
+  display: flex;
+  margin: 150px 128px;
+  text-align: center;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 4.5rem;
+  right: 2rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 31px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* call to action */
+#call {
+  width: 628px;
+  height: 311px;
+  margin-left: 25px;
+}
+
+.call-to-action h3 {
+  font-size: 58px;
+}
+
+.call-to-action button {
+  text-decoration: none;
+  color: white;
+  background-image: linear-gradient(to right, #3b77f8, #3b48f8);
+  width: 267px;
+  height: 47px;
+  border: none;
+  border-radius: 25px;
+  font-size: 24px;
+}
+
+.call-to-action button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(59, 150, 248),
+    rgb(59, 90, 248)
+  );
+  cursor: pointer;
+}
+
+.call-to-action a {
+  text-decoration: none;
+}
+
+/* brain image */
+#brain-background img {
+  position: absolute;
+  left: 55vw;
+}
+
+/* media query for toggle button */
+
+@media only screen and (max-width: 813px) {
+  header {
+    margin-left: 4.5rem;
+  }
+
+  .toggle-button {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+}
+
+/* media querys for responsive design */
+@media only screen and (max-width: 1725px) {
+  #brain-background img {
+    transform: translateY(120px);
+    width: 650px;
+    height: auto;
+  }
+
+  #logo {
+    width: 120px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  #brain-background img {
+    display: none;
+  }
+
+  #call {
+    margin-top: 8vh;
+    padding-left: 12vw;
+    padding-right: 12vw;
+  }
+
+  #call h3 {
+    font-size: 36px;
+  }
+
+  .call-to-action button {
+    width: 180px;
+    height: 42px;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+}
