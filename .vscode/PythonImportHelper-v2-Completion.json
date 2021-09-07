@@ -1,0 +1,216 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask.helpers",
+        "description": "flask.helpers",
+        "isExtraImport": true,
+        "detail": "flask.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "MySQL",
+        "importPath": "flask_mysqldb",
+        "description": "flask_mysqldb",
+        "isExtraImport": true,
+        "detail": "flask_mysqldb",
+        "documentation": {}
+    },
+    {
+        "label": "check_password",
+        "importPath": "authentication",
+        "description": "authentication",
+        "isExtraImport": true,
+        "detail": "authentication",
+        "documentation": {}
+    },
+    {
+        "label": "encrypt_password",
+        "importPath": "authentication",
+        "description": "authentication",
+        "isExtraImport": true,
+        "detail": "authentication",
+        "documentation": {}
+    },
+    {
+        "label": "Bcrypt",
+        "importPath": "flask_bcrypt",
+        "description": "flask_bcrypt",
+        "isExtraImport": true,
+        "detail": "flask_bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "test",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()\n    print(results)\n    return '<h1>Pi Change</h1>'\n@app.route('/')\n@app.route('/home')\ndef home():\n    return render_template('home.html')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def home():\n    return render_template('home.html')\n@app.route('/login', methods=['GET', 'POST'])\ndef signIn():\n    if request.method == 'POST':\n        url = request.url\n        # getting infor from the form\n        data = request.form\n        username = data.get('username')\n        password = data.get('password')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "signIn",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def signIn():\n    if request.method == 'POST':\n        url = request.url\n        # getting infor from the form\n        data = request.form\n        username = data.get('username')\n        password = data.get('password')\n        # now has to check database\n        cur = mysql.connection.cursor()\n        # this will check if the user exist",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "signUp",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def signUp():\n    if request.method == 'POST':\n        data = request.form\n        # gets data from the form\n        email = data.get('email')\n        confirm_email = data.get('confirm_email')\n        username = data.get('username')\n        password = data.get('password')\n        confirm_password = data.get('confirm_password')\n        # checking if all data exist",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\n# ---- database connect ----\n# host will be local host once moved to pi\napp.config['MYSQL_HOST'] = '192.168.254.156'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['MYSQL_HOST']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['MYSQL_HOST'] = '192.168.254.156'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['MYSQL_USER']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['MYSQL_PASSWORD']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['MYSQL_DB']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()\n    print(results)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['MYSQL_CURSORCLASS']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()\n    print(results)\n    return '<h1>Pi Change</h1>'",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "mysql",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "mysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()\n    print(results)\n    return '<h1>Pi Change</h1>'\n@app.route('/')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "encrypt_password",
+        "kind": 2,
+        "importPath": "authentication",
+        "description": "authentication",
+        "peekOfCode": "def encrypt_password(password):\n    '''\n    this function will encrypt a new users password \\n\n    password -- the chosen password to encrypt \n    '''\n    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')\n    return hashed_password\ndef check_password(hashed_password, entered_password):\n    '''\n    this will check if the entered password matches the hashed password \\n",
+        "detail": "authentication",
+        "documentation": {}
+    },
+    {
+        "label": "check_password",
+        "kind": 2,
+        "importPath": "authentication",
+        "description": "authentication",
+        "peekOfCode": "def check_password(hashed_password, entered_password):\n    '''\n    this will check if the entered password matches the hashed password \\n\n    hashed_password -- a hashed password from the database \\n\n    entered_password -- passowrd to compare the hashed password to\n    '''\n    return bcrypt.check_password_hash(hashed_password, entered_password)",
+        "detail": "authentication",
+        "documentation": {}
+    },
+    {
+        "label": "bcrypt",
+        "kind": 5,
+        "importPath": "authentication",
+        "description": "authentication",
+        "peekOfCode": "bcrypt = Bcrypt()\ndef encrypt_password(password):\n    '''\n    this function will encrypt a new users password \\n\n    password -- the chosen password to encrypt \n    '''\n    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')\n    return hashed_password\ndef check_password(hashed_password, entered_password):\n    '''",
+        "detail": "authentication",
+        "documentation": {}
+    }
+]

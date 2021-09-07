@@ -5,11 +5,19 @@
   --background: #0a1931;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-image: linear-gradient(to right, #2a5470, #4c4177);
   color: white;
-  margin: 0;
-  padding: 0;
+  overflow: hidden;
+}
+
+html {
   overflow: hidden;
 }
 
@@ -25,9 +33,9 @@ header {
 }
 /* nav bar styles */
 nav {
-  justify-content: space-between;
-  align-items: center;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-links ul {
@@ -58,31 +66,27 @@ nav {
   border-radius: 25px;
 }
 
+/* nav bar icon */
+
+.burger {
+  display: none;
+}
+
+.lines {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+}
+
+/* call to action */
+
 .call-to-action {
   display: flex;
   margin: 150px 128px;
   text-align: center;
 }
 
-.toggle-button {
-  position: absolute;
-  top: 4.5rem;
-  right: 3rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 31px;
-  height: 21px;
-}
-
-.toggle-button .bar {
-  height: 3px;
-  width: 100%;
-  background-color: white;
-  border-radius: 10px;
-}
-
-/* call to action */
 #call {
   width: 628px;
   height: 311px;
@@ -127,44 +131,38 @@ nav {
 
 @media only screen and (max-width: 813px) {
   header {
-    margin: 0;
-    margin-top: 25px;
+    margin: 25px 25px;
   }
 
-  .toggle-button {
-    display: flex;
-  }
-
-  .navbar {
+  .nav-links {
+    position: absolute;
+    right: 0px;
+    height: 100vh;
+    top: 0vh;
+    width: 40vh;
+    background-color: rgb(41, 41, 41, 0.98);
+    align-items: center;
+    justify-content: space-around;
     flex-direction: column;
-    align-items: flex-start;
+    transform: translateX(100%);
   }
 
-  .navbar img {
-    transform: translateX(10vw);
+  .nav-active {
+    transition: transform 0.5s ease-in;
+    transform: translateX(0%);
   }
 
-  .navbar-links {
-    display: none;
-    width: 100%;
-    padding: 20px 21vw;
-    margin-top: 10px;
-    background-color: rgb(49, 49, 49, 0.3);
-  }
-
-  .navbar-links li {
-    text-align: center;
-  }
-
-  .navbar-links.active {
-    display: flex;
+  .burger {
+    z-index: 1;
+    display: block;
+    cursor: pointer;
   }
 }
 
 /* media querys for responsive design */
 @media only screen and (max-width: 1725px) {
   #brain-background img {
-    transform: translateY(120px);
+    transform: translateY(170px);
     width: 650px;
     height: auto;
   }

@@ -1,6 +1,13 @@
-const toggleButton = document.getElementsByClassName('toggle-button')[0];
-const navbarLinks = document.getElementsByClassName('navbar-links')[0];
+const navSlide = () => {
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.navbar-links ul');
+  console.log(nav);
+  console.log(burger);
 
-toggleButton.addEventListener('click', () => {
-  navbarLinks.classList.toggle('active');
-});
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('nav-active');
+    burger.classList.toggle('burger-active ');
+  });
+};
+
+navSlide();
