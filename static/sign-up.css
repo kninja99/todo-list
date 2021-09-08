@@ -1,13 +1,139 @@
-/* correcting stylesheet of login for signup */
-
-form div {
-  margin-top: 25px;
+:root {
+  font-family: 'Ubuntu', sans-serif;
+  --background: #0a1931;
 }
 
-.username {
-  margin-top: 25px;
+body {
+  background-image: linear-gradient(to right, #2a5470, #4c4177);
+  color: white;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
+}
+
+/* login box styles */
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-background {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 150px;
+  width: 400px;
+  height: 400px;
+  background-color: rgb(49, 49, 49, 0.5);
+  border-radius: 60px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  padding-top: 20px;
+  font-weight: 400;
+  border-bottom: solid;
+  border-color: rgba(22, 22, 22, 0.4);
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+input {
+  width: 300px;
+  height: 25px;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgba(22, 22, 22, 0.4);
+  border-radius: none;
+  border-style: none;
+  outline: none;
+  color: white;
+}
+
+input:focus {
+  color: white;
+}
+
+button {
+  border-radius: none;
+  border-style: none;
+  outline: none;
+}
+
+form div {
+  margin-top: 20px;
+}
+
+form button {
+  width: 200px;
+  height: 25px;
+  border-radius: 25px;
+  background-image: linear-gradient(to right, #3b77f8, #3b48f8);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+form button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(59, 150, 248),
+    rgb(59, 90, 248)
+  );
 }
 
 #signup-btn {
   margin-top: 25px;
+}
+#signup-btn a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  width: 200px;
+  height: 26px;
+}
+
+/* alert styles */
+
+.alerts {
+  position: relative;
+  text-align: center;
+  width: 250px;
+  transform: translateY(50px);
+  justify-content: center;
+}
+
+.alerts h4 {
+  position: relative;
+  transform: translateY(2px);
+  z-index: 0;
+}
+
+/* styles for sucesses */
+
+/* error alert styles */
+#dismisal-error {
+  float: right;
+  background-color: rgb(244, 67, 54);
+  border-radius: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+#dismisal-error:hover {
+  background-color: rgb(204, 53, 43);
+}
+
+.error {
+  background-image: linear-gradient(
+    to right,
+    rgb(239, 83, 80, 0.7),
+    rgb(244, 67, 54, 0.7)
+  );
+  border: solid rgb(244, 67, 54);
+  border-radius: 15px;
+}
+
+@media only screen and (max-width: 440px) {
+  .login-background {
+    width: 320px;
+  }
 }

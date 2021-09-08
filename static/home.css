@@ -15,15 +15,13 @@ body {
   background-image: linear-gradient(to right, #2a5470, #4c4177);
   color: white;
   overflow: hidden;
-}
-
-html {
-  overflow: hidden;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
 }
 
 /* headers */
 header {
-  margin-top: 28px;
+  margin-top: 2vh;
   margin-left: 120px;
   margin-right: 95px;
 }
@@ -59,6 +57,7 @@ header {
   border: none;
   border-radius: 25px;
   font-size: 24px;
+  margin-top: 8vh;
 }
 
 .call-to-action button:hover {
@@ -92,6 +91,21 @@ header {
     width: 120px;
     height: auto;
   }
+
+  #call {
+    margin-top: 10vh;
+  }
+
+  #call h3 {
+    font-size: 42px;
+  }
+
+  .call-to-action button {
+    width: 180px;
+    height: 42px;
+    font-size: 18px;
+    margin-top: 5vh;
+  }
 }
 
 @media only screen and (max-width: 1250px) {
@@ -99,20 +113,34 @@ header {
     display: none;
   }
 
-  #call {
-    margin-top: 8vh;
-    padding-left: 12vw;
-    padding-right: 12vw;
+  .call-to-action {
+    justify-content: center;
   }
 
   #call h3 {
-    font-size: 36px;
+    font-size: 52px;
+  }
+}
+
+@media only screen and (max-width: 812px) {
+  #call h3 {
+    font-size: 32px;
+  }
+
+  .call-to-action {
+    margin: 22vh 5vw;
+    margin-top: 22vh;
+    padding: 0;
   }
 
   .call-to-action button {
     width: 180px;
     height: 42px;
-    font-size: 18px;
-    margin-top: 20px;
+    font-size: 16px;
+    margin-top: 5vh;
+  }
+
+  header {
+    margin: 5vw;
   }
 }

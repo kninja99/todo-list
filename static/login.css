@@ -1,22 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 :root {
-  margin: 0;
-  font-family: sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   --background: #0a1931;
 }
 
 body {
   background-image: linear-gradient(to right, #2a5470, #4c4177);
   color: white;
-}
-
-.header {
-  text-align: center;
-  margin-top: 15px;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
 }
 
 /* login box styles */
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .login-background {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   margin-top: 150px;
   width: 400px;
@@ -26,15 +32,16 @@ body {
 }
 
 h3 {
+  font-size: 1.5rem;
   padding-top: 20px;
-  font-weight: 450;
+  font-weight: 400;
   border-bottom: solid;
   border-color: rgba(22, 22, 22, 0.4);
   padding-bottom: 10px;
 }
 
 .username {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .password {
@@ -43,6 +50,7 @@ h3 {
 
 input {
   width: 300px;
+  height: 25px;
   text-align: center;
   border-radius: 25px;
   background-color: rgba(22, 22, 22, 0.4);
@@ -68,6 +76,7 @@ button {
 
 form button {
   width: 200px;
+  height: 25px;
   border-radius: 25px;
   background-image: linear-gradient(to right, #3b77f8, #3b48f8);
   color: rgba(255, 255, 255, 0.7);
@@ -97,6 +106,7 @@ form button:hover {
   text-align: center;
   width: 250px;
   transform: translateY(50px);
+  justify-content: center;
 }
 
 .alerts h4 {

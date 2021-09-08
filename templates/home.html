@@ -5,41 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/nav.css" />
+    {%block styles%}
     <link rel="stylesheet" href="../static/home.css" />
     <title>TODO</title>
+    {%endblock%}
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <img id="logo" src="../static/img/todo_logo.jpg" alt="logo" />
-        <div class="navbar-links">
-          <ul class="nav-links">
-            <li><a href="/home">HOME</a></li>
-            <li><a href="/login">SIGN IN</a></li>
-            <li><a href="/signup">SIGN UP</a></li>
-          </ul>
-        </div>
-        <!-- nav bar icon -->
-        <div class="burger">
-          <div class="lines"></div>
-          <div class="lines"></div>
-          <div class="lines"></div>
-        </div>
-      </nav>
-    </header>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar">
+          <img id="logo" src="../static/img/todo_logo.jpg" alt="logo" />
+          <div class="navbar-links">
+            <ul class="nav-links">
+              <li><a href="/home">HOME</a></li>
+              <li><a href="/login">SIGN IN</a></li>
+              <li><a href="/signup">SIGN UP</a></li>
+            </ul>
+          </div>
+          <!-- nav bar icon -->
+          <div class="burger">
+            <div class="lines"></div>
+            <div class="lines"></div>
+            <div class="lines"></div>
+          </div>
+        </nav>
+      </header>
 
-    {%block container%}
-    <div class="call-to-action">
-      <div id="call">
-        <h3>Brighten your future and start being more productive today</h3>
-        <a href="/signup"><button>SIGN UP</button></a>
+      {%block container%}
+      <div class="call-to-action">
+        <div id="call">
+          <h3>Brighten your future and start being more productive today</h3>
+          <a href="/signup"><button>SIGN UP</button></a>
+        </div>
+        <div id="brain-background">
+          <img src="../static/img/brain firing_adobespark.png" alt="brain" />
+        </div>
       </div>
-      <div id="brain-background">
-        <img src="../static/img/brain firing_adobespark.png" alt="brain" />
-      </div>
+      {%endblock%}
+
+      <div class="cirlce-1"></div>
+      <div class="cirlce-2"></div>
+      <div class="cirlce-3"></div>
+      <div class="cirlce-4"></div>
+      <script src="../static/js/navabar.js"></script>
     </div>
-
-    {%endblock%}
-    <script src="../static/js/navabar.js"></script>
   </body>
 </html>

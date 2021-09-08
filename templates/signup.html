@@ -1,29 +1,61 @@
-{% extends "login.html" %} {% block sty %}<link
-  rel="stylesheet"
-  href="../static/sign-up.css"
-/>
-{%endblock%} {% block title %}Sign-Up{%endblock%} {% block content %}
-<h3>Sign-Up</h3>
-<form method="POST">
-  <div class="email">
-    <input type="text" placeholder="Email" name="email" />
-  </div>
-  <div class="confirm-email">
-    <input type="text" placeholder="Confirm Email" name="confirm_email" />
-  </div>
-  <div class="username">
-    <input type="text" placeholder="Username" name="username" />
-  </div>
-  <div class="password">
-    <input type="password" placeholder="Password" name="password" />
-  </div>
-  <div class="confirm-password">
-    <input
-      type="password"
-      placeholder="Confirm Password"
-      name="confirm_password"
-    />
-  </div>
-  <button type="submit" id="signup-btn">sign-up</button>
-</form>
+{% extends "home.html" %} {%block styles%}
+<link rel="stylesheet" href="../static/sign-up.css" />
+{%endblock%}
+
+{%block container%}
+<!-- flashes errors -->
+    
+    {% with messages = get_flashed_messages(with_categories =true) %} {% if messages %}
+    
+    <!-- custom alerts -->
+    <div class="container">
+        <div class="alerts">
+        {% for category,message in messages %}
+        <button id = "dismisal-{{category}}">X</button>
+        <div class= "{{category}}"><h4>{{message}}</h3> </div>
+        <!-- adds ability to remove alert -->
+        <script>
+            let dis_button = document.querySelector("#dismisal-{{category}} ");
+            let alerts = document.querySelector(".alerts")
+            dis_button.addEventListener("click", ()=>{
+            alerts.remove()
+            })
+        </script>
+        {% endfor %}
+        </div>
+    </div>
+      
+  
+    {% endif %} {% endwith %}
+
+    <!-- login box -->
+    <div class="container">
+        <div class="login-background">
+            <h3>Sign-Up</h3>
+            <form method="POST">
+                <div class="email">
+                    <input type="text" placeholder="Email" name="email" />
+                </div>
+                <div class="confirm-email">
+                    <input type="text" placeholder="Confirm Email" name="confirm_email" />
+                </div>
+                <div class="username">
+                    <input type="text" placeholder="Username" name="username" />
+                </div>
+                <div class="password">
+                    <input type="password" placeholder="Password" name="password" />
+                </div>
+                <div class="confirm-password">
+                    <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="confirm_password"
+                    />
+                </div>
+                <button type="submit" id="signup-btn">sign-up</button>
+            </form>
+        </div>
+    </div>
+    
+    
 {%endblock%}
