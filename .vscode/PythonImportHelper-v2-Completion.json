@@ -128,7 +128,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\n# ---- database connect ----\n# host will be local host once moved to pi\napp.config['MYSQL_HOST'] = '192.168.254.156'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)",
+        "peekOfCode": "app = Flask(__name__)\n# ---- database connect ----\n# host will be local host once moved to pi\napp.config['MYSQL_HOST'] = 'localhost'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)",
         "detail": "app",
         "documentation": {}
     },
@@ -137,7 +137,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MYSQL_HOST'] = '192.168.254.156'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():",
+        "peekOfCode": "app.config['MYSQL_HOST'] = 'localhost'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():",
         "detail": "app",
         "documentation": {}
     },

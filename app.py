@@ -7,7 +7,7 @@ app = Flask(__name__)
 # ---- database connect ----
 
 # host will be local host once moved to pi
-app.config['MYSQL_HOST'] = '192.168.254.156'
+app.config['MYSQL_HOST'] = 'localhost'
 # this will be root once moved to pi
 app.config['MYSQL_USER'] = 'remoteUser'
 app.config['MYSQL_PASSWORD'] = 'Orkz9921('
