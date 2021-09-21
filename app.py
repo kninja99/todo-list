@@ -1,16 +1,19 @@
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, flash, redirect, session, url_for
 from flask.helpers import url_for
 from flask_mysqldb import MySQL
 from authentication import check_password, encrypt_password
+from dashboard import user_dashboard
+import os
 
 app = Flask(__name__)
+app.register_blueprint(user_dashboard)
 # ---- database connect ----
 
 # host will be local host once moved to pi
-app.config['MYSQL_HOST'] = '192.168.254.156'
+app.config['MYSQL_HOST'] = os.environ.get('SERVER_IP')
 # this will be root once moved to pi
 app.config['MYSQL_USER'] = 'remoteUser'
-app.config['MYSQL_PASSWORD'] = 'Orkz9921('
+app.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')
 app.config['MYSQL_DB'] = 'todoList'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -50,7 +53,6 @@ def signIn():
                 f"select username from Users where username='{username}'")
             # checking the Username
             database_username = cur.fetchone()['username']
-            print(database_username)
             # checking the password
             try:
                 cur.execute(
@@ -59,9 +61,10 @@ def signIn():
                 database_password = database_password['password']
                 # checking if the user sucessfully logged in
                 if(check_password(database_password, password)):
+                    # sets a seassion username
                     session['username'] = database_username
                     # where it will redirect user once it loads
-                    return f"<h1>Hello {session['username']}</h2>"
+                    return redirect(url_for('user_dashboard.dashboard'))
             except:
                 flash('password incorrect', category='error')
                 return render_template('login.html')
@@ -72,8 +75,11 @@ def signIn():
         return render_template('login.html')
 
 
-@app.route('/signup', methods=['GET', 'POST'])
+@ app.route('/signup', methods=['GET', 'POST'])
 def signUp():
+    '''
+    this is the backend logic for the signUp page
+    '''
     if request.method == 'POST':
         data = request.form
         # gets data from the form
@@ -98,7 +104,7 @@ def signUp():
             else:
                 cur = mysql.connection.cursor()
                 hashed_password = encrypt_password(password)
-                # trys to create the user
+                # trys to create the user in the database
                 try:
                     cur.execute(
                         f"insert into Users values('{email}', '{username}' , '{hashed_password}')")
@@ -112,6 +118,7 @@ def signUp():
         return render_template('signup.html')
 
 
+# runs the app
 if __name__ == '__main__':
-    app.secret_key = 'pie123'
+    app.secret_key = os.environ.get('SECRET_KEY')
     app.run(debug=True, host='0.0.0.0')

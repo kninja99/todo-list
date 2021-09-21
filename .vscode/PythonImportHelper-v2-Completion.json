@@ -49,6 +49,38 @@
     },
     {
         "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
         "importPath": "flask.helpers",
         "description": "flask.helpers",
         "isExtraImport": true,
@@ -77,6 +109,23 @@
         "description": "authentication",
         "isExtraImport": true,
         "detail": "authentication",
+        "documentation": {}
+    },
+    {
+        "label": "user_dashboard",
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "isExtraImport": true,
+        "detail": "dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
@@ -119,7 +168,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def signUp():\n    if request.method == 'POST':\n        data = request.form\n        # gets data from the form\n        email = data.get('email')\n        confirm_email = data.get('confirm_email')\n        username = data.get('username')\n        password = data.get('password')\n        confirm_password = data.get('confirm_password')\n        # checking if all data exist",
+        "peekOfCode": "def signUp():\n    '''\n    this is the backend logic for the signUp page\n    '''\n    if request.method == 'POST':\n        data = request.form\n        # gets data from the form\n        email = data.get('email')\n        confirm_email = data.get('confirm_email')\n        username = data.get('username')",
         "detail": "app",
         "documentation": {}
     },
@@ -128,7 +177,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\n# ---- database connect ----\n# host will be local host once moved to pi\napp.config['MYSQL_HOST'] = '192.168.254.156'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)",
+        "peekOfCode": "app = Flask(__name__)\napp.register_blueprint(user_dashboard)\n# ---- database connect ----\n# host will be local host once moved to pi\napp.config['MYSQL_HOST'] = os.environ.get('SERVER_IP')\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'",
         "detail": "app",
         "documentation": {}
     },
@@ -137,7 +186,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MYSQL_HOST'] = '192.168.254.156'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():",
+        "peekOfCode": "app.config['MYSQL_HOST'] = os.environ.get('SERVER_IP')\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():",
         "detail": "app",
         "documentation": {}
     },
@@ -146,7 +195,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')",
+        "peekOfCode": "app.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')",
         "detail": "app",
         "documentation": {}
     },
@@ -155,7 +204,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()",
+        "peekOfCode": "app.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()",
         "detail": "app",
         "documentation": {}
     },
@@ -211,6 +260,24 @@
         "description": "authentication",
         "peekOfCode": "bcrypt = Bcrypt()\ndef encrypt_password(password):\n    '''\n    this function will encrypt a new users password \\n\n    password -- the chosen password to encrypt \n    '''\n    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')\n    return hashed_password\ndef check_password(hashed_password, entered_password):\n    '''",
         "detail": "authentication",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard",
+        "kind": 2,
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "peekOfCode": "def dashboard():\n    return 'this is the dashboard'",
+        "detail": "dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "user_dashboard",
+        "kind": 5,
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "peekOfCode": "user_dashboard = Blueprint('user_dashboard', __name__,\n                           static_folder='static', template_folder='templates')\n@user_dashboard.route('/dashboard')\ndef dashboard():\n    return 'this is the dashboard'",
+        "detail": "dashboard",
         "documentation": {}
     }
 ]
