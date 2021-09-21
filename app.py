@@ -2,15 +2,16 @@ from flask import Flask, render_template, request, flash, redirect, session
 from flask.helpers import url_for
 from flask_mysqldb import MySQL
 from authentication import check_password, encrypt_password
+import os
 
 app = Flask(__name__)
 # ---- database connect ----
 
 # host will be local host once moved to pi
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = os.environ.get('SERVER_IP')
 # this will be root once moved to pi
 app.config['MYSQL_USER'] = 'remoteUser'
-app.config['MYSQL_PASSWORD'] = 'Orkz9921('
+app.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')
 app.config['MYSQL_DB'] = 'todoList'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -113,5 +114,5 @@ def signUp():
 
 
 if __name__ == '__main__':
-    app.secret_key = 'pie123'
+    app.secret_key = os.environ.get('SECRET_KEY')
     app.run(debug=True, host='0.0.0.0')

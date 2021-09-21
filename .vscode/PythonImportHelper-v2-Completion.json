@@ -80,6 +80,15 @@
         "documentation": {}
     },
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "Bcrypt",
         "importPath": "flask_bcrypt",
         "description": "flask_bcrypt",
@@ -128,7 +137,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\n# ---- database connect ----\n# host will be local host once moved to pi\napp.config['MYSQL_HOST'] = 'localhost'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)",
+        "peekOfCode": "app = Flask(__name__)\n# ---- database connect ----\n# host will be local host once moved to pi\napp.config['MYSQL_HOST'] = os.environ.get('SERVER_IP')\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)",
         "detail": "app",
         "documentation": {}
     },
@@ -137,7 +146,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MYSQL_HOST'] = 'localhost'\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():",
+        "peekOfCode": "app.config['MYSQL_HOST'] = os.environ.get('SERVER_IP')\n# this will be root once moved to pi\napp.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():",
         "detail": "app",
         "documentation": {}
     },
@@ -146,7 +155,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')",
+        "peekOfCode": "app.config['MYSQL_USER'] = 'remoteUser'\napp.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')",
         "detail": "app",
         "documentation": {}
     },
@@ -155,7 +164,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MYSQL_PASSWORD'] = 'Orkz9921('\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()",
+        "peekOfCode": "app.config['MYSQL_PASSWORD'] = os.environ.get('DB_PASS')\napp.config['MYSQL_DB'] = 'todoList'\napp.config['MYSQL_CURSORCLASS'] = 'DictCursor'\nmysql = MySQL(app)\n# server testing\n@app.route('/databaseTest')\ndef test():\n    cur = mysql.connection.cursor()\n    cur.execute('''select * from Users ''')\n    results = cur.fetchall()",
         "detail": "app",
         "documentation": {}
     },
