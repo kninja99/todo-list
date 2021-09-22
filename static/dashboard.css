@@ -1,0 +1,100 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: linear-gradient(to right, #2a5470, #4c4177);
+}
+
+.grid {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 0.5fr 0.4fr 1fr 1fr;
+  grid-template-areas:
+    'side-bar date-time weather stars'
+    'side-bar date-time weather stars'
+    'side-bar date-time weather stars'
+    'side-bar upcoming-task upcoming-task upcoming-task'
+    'side-bar upcoming-task upcoming-task upcoming-task'
+    'side-bar upcoming-task upcoming-task upcoming-task';
+  grid-gap: 0.5rem;
+}
+
+#side-bar {
+  grid-area: side-bar;
+  background-color: rgba(31, 172, 172, 0.5);
+}
+
+#date-time {
+  grid-area: date-time;
+  background-color: rgba(46, 202, 202, 0.5);
+}
+
+#weather {
+  grid-area: weather;
+  background-color: rgba(42, 243, 243, 0.5);
+}
+#stars {
+  grid-area: stars;
+  background-color: rgba(139, 245, 245, 0.5);
+}
+
+.utilitys {
+  margin: 25px 0.5vw;
+}
+
+#upcoming-task {
+  grid-area: upcoming-task;
+  background-color: rgba(49, 116, 116, 0.5);
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  margin-bottom: 25px;
+}
+
+.burger {
+  position: absolute;
+  left: 0.7vw;
+  top: 0.7vh;
+  display: none;
+}
+
+.lines {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 0.5fr 0.4fr 1fr 1fr;
+    grid-template-areas:
+      'date-time weather stars'
+      'date-time weather  stars'
+      'date-time weather stars'
+      'upcoming-task upcoming-task upcoming-task'
+      'upcoming-task upcoming-task upcoming-task'
+      'upcoming-task upcoming-task upcoming-task';
+    grid-gap: 0.5rem;
+  }
+
+  .utilitys {
+    margin-top: 50px;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .burger:hover {
+    cursor: pointer;
+  }
+
+  #side-bar {
+    position: absolute;
+    height: 100vh;
+    width: 270px;
+    transform: translateX(-100%);
+  }
+}
