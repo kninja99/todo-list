@@ -20,7 +20,7 @@ body {
   grid-gap: 0.5rem;
 }
 
-#side-bar {
+.side-bar {
   grid-area: side-bar;
   background-color: rgba(31, 172, 172, 0.5);
 }
@@ -85,16 +85,26 @@ body {
 
   .burger {
     display: block;
+    z-index: 2;
   }
 
   .burger:hover {
     cursor: pointer;
   }
 
-  #side-bar {
+  .side-bar {
     position: absolute;
     height: 100vh;
     width: 270px;
     transform: translateX(-100%);
+  }
+
+  .side-bar-active {
+    transition: transform 0.5s ease-in;
+    transform: translate(0%);
+  }
+
+  .side-bar-deactive {
+    transition: transform 0.5s ease-out;
   }
 }

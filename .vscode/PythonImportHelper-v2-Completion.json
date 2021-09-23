@@ -267,7 +267,7 @@
         "kind": 2,
         "importPath": "dashboard",
         "description": "dashboard",
-        "peekOfCode": "def dashboard():\n    return 'this is the dashboard'",
+        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')",
         "detail": "dashboard",
         "documentation": {}
     },
@@ -276,7 +276,7 @@
         "kind": 5,
         "importPath": "dashboard",
         "description": "dashboard",
-        "peekOfCode": "user_dashboard = Blueprint('user_dashboard', __name__,\n                           static_folder='static', template_folder='templates')\n@user_dashboard.route('/dashboard')\ndef dashboard():\n    return 'this is the dashboard'",
+        "peekOfCode": "user_dashboard = Blueprint('user_dashboard', __name__,\n                           static_folder='static', template_folder='templates')\n@user_dashboard.route('/dashboard')\ndef dashboard():\n    return render_template('dashboard.html')",
         "detail": "dashboard",
         "documentation": {}
     }
