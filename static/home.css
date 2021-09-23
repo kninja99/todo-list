@@ -144,3 +144,11 @@ header {
     margin: 5vw;
   }
 }
+
+/* fixes brain image when at smaller heights */
+@media only screen and (max-height: 800px) {
+  #brain-background img {
+    right: 20vw;
+    bottom: 18vh;
+  }
+}
