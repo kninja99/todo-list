@@ -2,9 +2,11 @@ from flask import Flask, render_template, request, flash, redirect, session
 from flask.helpers import url_for
 from flask_mysqldb import MySQL
 from authentication import check_password, encrypt_password
+from dashboard import user_dashboard
 import os
 
 app = Flask(__name__)
+app.register_blueprint(user_dashboard)
 # ---- database connect ----
 
 # host will be local host once moved to pi
